@@ -1,6 +1,8 @@
 # imports
 import pygame
 from constants import *
+from player import *
+from circleshape import *
 
 #start main:
 def main():
@@ -8,7 +10,7 @@ def main():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     
     black = (0, 0, 0)
-
+    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
     #delta time
     clock = pygame.time.Clock()
     dt  = 0
@@ -19,6 +21,7 @@ def main():
             if event.type == pygame.QUIT:
                 return
         screen.fill(black)
+        player.draw(screen)
         pygame.display.flip()
         clock.tick(60)
         dt = clock.get_time() / 1000
