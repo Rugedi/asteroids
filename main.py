@@ -7,13 +7,14 @@ from circleshape import *
 #start main:
 def main():
     pygame.init()
+    start_ticks = pygame.time.get_ticks()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     
     black = (0, 0, 0)
-    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, PLAYER_RADIUS)
     #delta time
     clock = pygame.time.Clock()
-    dt  = 0
+    dt = 0
 
 
     while True:
@@ -22,14 +23,15 @@ def main():
                 return
         screen.fill(black)
         player.draw(screen)
+        player.update(dt)
         pygame.display.flip()
-        clock.tick(60)
-        dt = clock.get_time() / 1000
+        dt = clock.tick(60) / 1000
+        
 
 
-    print("Starting Asteroids!")
-    print(f"Screen width: {SCREEN_WIDTH}")
-    print(f"Screen height: {SCREEN_HEIGHT}")
+    #print("Starting Asteroids!")
+    #print(f"Screen width: {SCREEN_WIDTH}")
+    #print(f"Screen height: {SCREEN_HEIGHT}")
 
 
 if __name__ == "__main__":
